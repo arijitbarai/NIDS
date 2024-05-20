@@ -4,6 +4,7 @@ import datetime
 
 myPath = os.getcwd()
 files = os.listdir(myPath)
+
 def check_malicious_processes():
     # Read the CSV file containing the names of malicious processes
     with open('malicious_processes.csv', 'r') as f:
@@ -13,9 +14,9 @@ def check_malicious_processes():
     for f in files:
         if f.startswith("PROINFO"):
             print(f)
-            fx = open(f)
-            lines = fx.readlines()
-            fx.close()
+            with open(f, 'r') as fx:
+                reader = csv.reader(fx)
+                lines = list(reader)
 
             # Extract the hostname and port from the filename
             filename_parts = f.split('-')
@@ -30,8 +31,7 @@ def check_malicious_processes():
 
                 writer.writeheader()
 
-                for line in lines[1:]:  # Skip the header line
-                    data = line.split(',')
+                for data in lines[1:]:  # Skip the header line
                     process_id = data[0]
                     process_name = data[1]
                     status = data[2]

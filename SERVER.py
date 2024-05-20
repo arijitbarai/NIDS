@@ -2,7 +2,7 @@ import sys
 import selectors
 import socket
 import types
-import os
+
 import datetime
 
 mySelector = selectors.DefaultSelector()
