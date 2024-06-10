@@ -1,4 +1,4 @@
-Sure, here's a brief documentation for the project based on the provided code excerpts:
+
 
 # Network Intrusion Detection System (NIDS)
 
